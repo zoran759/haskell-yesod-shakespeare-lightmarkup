@@ -3,7 +3,7 @@
 
 name:                shakespeare-lightmarkup
 version:             0.6
-synopsis:            Shakespeare templates for Markdown
+synopsis:            Shakespeare templates for Markdown, Textile and RST
 -- description:         
 license:             MIT
 license-file:        LICENSE
@@ -18,7 +18,12 @@ library
   hs-source-dirs:    src 
   exposed-modules:   Text.Shakespeare.LightMarkup
   -- other-modules:       
-  build-depends:     base ==4.5.*, template-haskell ==2.7.*, shakespeare, blaze-html, text,
-                     xss-sanitize       >= 0.3.1,
-                     pandoc,
-                     yesod-routes, yesod-core
+  build-depends:     base == 4.5.*
+                     , template-haskell >= 2.7
+                     , shakespeare
+                     , blaze-html
+                     , text
+                     , xss-sanitize       >= 0.3.1
+                     , pandoc
+                     , yesod-routes
+                     , yesod-core
