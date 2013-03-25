@@ -15,4 +15,4 @@ getCreditsR = do
         toWidget $ LM.markdownToHtmlUrl $(LM.lmFile "templates/credits.markdown")
 ```
 
-Textile and RST have similar treatement, although not fully tested.
+Textile and RST have similar treatement.
