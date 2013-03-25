@@ -16,7 +16,6 @@ import qualified "text" Data.Text.Lazy as TL
 import qualified "text" Data.Text as TS
 import "text" Data.Text.Lazy.Builder (Builder, fromText, toLazyText, fromLazyText)
 import "blaze-html" Text.Blaze.Html (Html)
--- import "yesod-markdown" Yesod.Markdown (markdownToHtml, Markdown(..))
 import Text.Blaze.Html       (preEscapedToMarkup)
 import Text.Pandoc
 import Text.HTML.SanitizeXSS (sanitizeBalance)
