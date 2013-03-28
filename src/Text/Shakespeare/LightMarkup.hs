@@ -89,32 +89,24 @@ rstToHtmlUrl txt rurl = (rstToHtml . RST . TL.unpack . renderTextUrl rurl) txt
 textileToHtmlUrl :: TextUrl url -> RenderUrl url -> Html
 textileToHtmlUrl txt rurl = (textileToHtml . Textile . TL.unpack . renderTextUrl rurl) txt
 
--- | Converts RST to sanitizied Html
 rstToHtml :: RST -> Html
 rstToHtml = writePandoc yesodDefaultWriterOptions
           . parseRST yesodDefaultParserState
 
--- | Converts markdown directly to html using the yesod default option
---   sets and sanitization.
 markdownToHtml :: Markdown -> Html
 markdownToHtml = writePandoc yesodDefaultWriterOptions
                . parseMarkdown yesodDefaultParserState
 
--- | Converts markdown directly to html using the yesod default option
---   sets and sanitization.
 textileToHtml :: Textile -> Html
 textileToHtml = writePandoc yesodDefaultWriterOptions
                . parseTextile yesodDefaultParserState
                
--- | Converts the intermediate Pandoc type to Html. Sanitizes HTML.
 writePandoc :: WriterOptions -> Pandoc -> Html
 writePandoc wo = preEscapedToMarkup . sanitizeBalance . TS.pack . writeHtmlString wo
 
--- | Parses Markdown into the intermediate Pandoc type
 parseMarkdown :: ParserState -> Markdown -> Pandoc
 parseMarkdown ro (Markdown m) = readMarkdown ro m
 
--- | Parses Markdown into the intermediate Pandoc type
 parseRST :: ParserState -> RST -> Pandoc
 parseRST ro (RST m) = readRST ro m
 
@@ -122,14 +114,12 @@ parseTextile :: ParserState -> Textile -> Pandoc
 parseTextile ro (Textile m) = readTextile ro m
 
 
--- | Pandoc defaults, plus Html5, minus WrapText
 yesodDefaultWriterOptions :: WriterOptions
 yesodDefaultWriterOptions = defaultWriterOptions
   { writerHtml5    = True
   , writerWrapText = False
   }
 
--- | Pandoc defaults, plus Smart, plus ParseRaw
 yesodDefaultParserState :: ParserState
 yesodDefaultParserState = defaultParserState
     { stateSmart    = True
