@@ -24,6 +24,6 @@ library
                      , blaze-html
                      , text
                      , xss-sanitize       >= 0.3.1
-                     , pandoc
-                     , yesod-routes
-                     , yesod-core
+                     , pandoc          >= 1.9 && < 1.10
+                     , yesod-routes    < 1.1
+                     , yesod-core      < 1.1
